@@ -1,0 +1,106 @@
+{
+  "name": "js-heuristics",
+  "version": "0.0.0-development",
+  "description": "Useful heuristics and type checks for JavaScript",
+  "main": "./dist/js-heuristics.cjs.js",
+  "browser": "./dist/js-heuristics.umd.min.js",
+  "module": "./dist/js-heuristics.es.js",
+  "exports": {
+    "require": "./dist/js-heuristics.cjs.js",
+    "import": "./dist/js-heuristics.es.js"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "prepublishOnly": "npm run prebuild && npm run build",
+    "clean": "rimraf ./coverage && npm run prebuild",
+    "lint": "eslint 'lib/**/*.js' --no-fix",
+    "lint:fix": "eslint 'lib/**/*.js' --fix",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest && npm run clean",
+    "test:mon": "NODE_OPTIONS='--experimental-vm-modules' jest --watch _tests_.* && npm run clean",
+    "prebuild": "rimraf ./dist",
+    "prerelease": "npm pack && tar -xvzf *.tgz && rimraf package *.tgz",
+    "semantic-release": "semantic-release"
+  },
+  "author": "Matthew Zito <matthewtzito@gmail.com> (goldmund)",
+  "license": "MIT",
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "testEnvironment": "jest-environment-node",
+    "setupFilesAfterEnv": [
+      "./__tests__/setup.js"
+    ],
+    "testRegex": ".test.js$",
+    "coverageDirectory": "./coverage",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "lib/**/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 10,
+        "functions": 10,
+        "lines": 10,
+        "statements": 10
+      }
+    }
+  },
+  "lint-staged": {
+    "lib/**/*.js": [
+      "npm run lint",
+      "npm run test"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "7.13.8",
+    "@babel/plugin-transform-runtime": "7.13.9",
+    "@babel/preset-env": "7.13.9",
+    "@commitlint/cli": "12.0.1",
+    "@commitlint/config-conventional": "12.0.1",
+    "@rollup/plugin-babel": "5.3.0",
+    "@rollup/plugin-commonjs": "17.1.0",
+    "@rollup/plugin-json": "4.1.0",
+    "@rollup/plugin-node-resolve": "11.2.0",
+    "axios": "0.21.1",
+    "babel-eslint": "10.1.0",
+    "babel-jest": "26.6.3",
+    "core-js": "3.9.1",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "7.21.0",
+    "husky": "4.3.8",
+    "jest": "26.6.3",
+    "json-server": "0.16.3",
+    "lint-staged": "10.5.4",
+    "rimraf": "3.0.2",
+    "rollup": "2.40.0",
+    "rollup-plugin-terser": "7.0.2",
+    "semantic-release": "^17.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MatthewZito/js-heuristics.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
