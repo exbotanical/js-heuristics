@@ -2,6 +2,9 @@
 
 ## Useful heuristics, type checks, and validation helpers for JavaScript
 
+[![Build Status](https://travis-ci.org/MatthewZito/js-heuristics.svg?branch=master)](https://travis-ci.org/MatthewZito/js-heuristics)
+[![Coverage Status](https://coveralls.io/repos/github/MatthewZito/js-heuristics/badge.svg?branch=main)](https://coveralls.io/github/MatthewZito/js-heuristics?branch=main)
+
 `js-heuristics` is a library of useful heuristics, type checks, and validation helpers for JavaScript. Instead of repeatedly checking types, evaluating whether or not an API response is null (or indeed an object, only entirely empty), you can depend on this tested, consistent library API to get the job done.
 
 ![Exquisite GIF of Hagrid](docs/urawiz.gif "the maintainer does not guarantee this will happen to you")
