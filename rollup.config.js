@@ -31,12 +31,33 @@ export default [
               targets: 'maintained node versions'
             }
           ]
-        ]
+        ],
+        comments: false
       })
     ]
   },
   {
     /* UMD */
+    input: 'lib/index.js',
+    output: {
+      file: pkg.browser.replace(/\.min.js$/, '.js'),
+      format: 'umd',
+      name: 'heuristics'
+    },
+    plugins: [
+      nodeResolve({ browser: true }),
+      commonjs(),
+      babel({
+        exclude: 'node_modules/**',
+        babelrc: false,
+        ...babelrc,
+        babelHelpers: 'runtime',
+        comments: false
+      })
+    ]
+  },
+  {
+    /* Minified UMD */
     input: 'lib/index.js',
     output: {
       file: pkg.browser,
@@ -50,26 +71,8 @@ export default [
         exclude: 'node_modules/**',
         babelrc: false,
         ...babelrc,
-        babelHelpers: 'runtime'
-      })
-    ]
-  },
-  {
-    /* Minified UMD */
-    input: 'lib/index.js',
-    output: {
-      file: pkg.browser.replace(/\.js$/, '.js'),
-      format: 'umd',
-      name: 'heuristics'
-    },
-    plugins: [
-      nodeResolve({ browser: true }),
-      commonjs(),
-      babel({
-        exclude: 'node_modules/**',
-        babelrc: false,
-        ...babelrc,
-        babelHelpers: 'runtime'
+        babelHelpers: 'runtime',
+        comments: false
       }),
       terser()
     ]
@@ -88,7 +91,8 @@ export default [
         exclude: 'node_modules/**',
         babelrc: false,
         ...babelrc,
-        babelHelpers: 'runtime'
+        babelHelpers: 'runtime',
+        comments: false
       })
     ]
   }
