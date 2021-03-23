@@ -1,7 +1,7 @@
 {
   "name": "js-heuristics",
   "version": "0.0.0-development",
-  "description": "Useful heuristics and type checks for JavaScript",
+  "description": "Useful heuristics, type checks, and validation helpers for JavaScript",
   "main": "./dist/js-heuristics.cjs.js",
   "browser": "./dist/js-heuristics.umd.min.js",
   "module": "./dist/js-heuristics.es.js",
