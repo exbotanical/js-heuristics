@@ -4,7 +4,7 @@
 
 `js-heuristics` is a library of useful heuristics, type checks, and validation helpers for JavaScript. Instead of repeatedly checking types, evaluating whether or not an API response is null (or indeed an object, only entirely empty), you can depend on this tested, consistent library API to get the job done.
 
-![Exquisite GIF of Hagrid](docs/urawiz.gif)
+![Exquisite GIF of Hagrid](docs/urawiz.gif "the maintainer does not guarantee this will happen to you")
 
 *using this lib*
 
