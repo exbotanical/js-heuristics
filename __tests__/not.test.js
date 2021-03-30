@@ -81,6 +81,10 @@ describe('Evaluation obj empty checks', () => {
     it('returns false when object is empty', () => {
       expect(objNotEmpty(emptyObj)).toBe(false);
     });
+
+    it('returns false when provided a non-object', () => {
+      expect(objNotEmpty('')).toBe(false);
+    });
   });
 
   describe('assessment of object not empty (deep', () => {

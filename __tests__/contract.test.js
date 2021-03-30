@@ -7,6 +7,8 @@ import {
   testForEach
 } from '../lib';
 
+import { ContractViolation } from '../lib/utils/error';
+
 const obj = {},
   arr = [],
   str = '',
@@ -38,6 +40,27 @@ describe('Evaluation of base contracts', () => {
     notString.forEach(_ => expect(() => mustBeStr(_)).toThrow());
     notFunction.forEach(_ => expect(() => mustBeFn(_)).toThrow());
   });
+
+  it('throws a \'ContractViolation\' Error when violated', () => {
+    try {
+      mustBeObj('');
+    } catch (ex) {
+      expect(ex).toBeInstanceOf(ContractViolation);
+    }
+  });
+
+  it('allows a custom error message', () => {
+    const msg = 'Must be function';
+    
+    const mustBeFn = contract(isFunction, msg);
+
+    try {
+      mustBeFn('');
+    } catch ({ message }) {
+      expect(message).toBe(msg);
+    } 
+  });
+  
 });
 
 describe('Evaluation of \'testForEach\'', () => {

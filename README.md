@@ -19,6 +19,7 @@
   - [Type Checks](#typecheck)
   - [Validators](#validate)
   - [Contracts](#contract)
+  - [Iterators](#iter)
   
 ## <a name="builds"></a> Supported Environments
 
@@ -239,7 +240,7 @@ if (notInPrototype(obj, 'bar')) ... // true
 
 ### <a name="contract"></a> Contracts
 
-#### contract (predicate: Function): Function
+#### contract (predicate: Function, message?: string): Function
 
 *Generate a predicate-bound contract; either returns true or throws a violation*
 
@@ -256,6 +257,15 @@ var a = [];
 if (mustBeObject(o)) ... // true
 
 if (mustBeObject(a)) ... // throws
+
+
+const contractWithMessage = contract(isObject, 'Must be an object');
+
+try {
+  contractWithMessage('str');
+} catch ({ message }) {
+  console.log(message); // 'Must be an object'
+} 
 ```
 
 #### testForEach (...predicates: Function[]): boolean
@@ -272,4 +282,29 @@ function hasData () { ... }
 const isApiData = testForEach(isObject, hasData);
 
 if (isApiData(response)) ...
+```
+
+
+### <a name="iter"></a> Iterable
+
+#### range (start: (number|string), end: (number|string)): IterableIterator<string>
+
+*Generate an iterable range*
+
+**Example**
+
+```js
+import { range } from 'js-heuristics';
+
+const enumValue = 10;
+
+const enumChar = 'E';
+
+if (enumValue in range(1, 20)) ... // true
+
+if (enumValue in range(1, 5)) ... // false
+
+if (enumChar in range('A', 'z')) ... // true
+
+if (enumChar in range('a', 'd')) ... // false
 ```
