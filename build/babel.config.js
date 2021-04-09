@@ -12,5 +12,6 @@ export default {
     ['@babel/plugin-transform-runtime', {
       regenerator: true
     }]
-  ]
+  ],
+  comments: false
 }

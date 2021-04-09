@@ -285,7 +285,7 @@ if (isApiData(response)) ...
 ```
 
 
-### <a name="iter"></a> Iterable
+### <a name="iter"></a> Iterators
 
 #### range (start: (number|string), end: (number|string)): IterableIterator<string>
 
