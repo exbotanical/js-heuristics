@@ -67,6 +67,70 @@ var t = isFunction(fn);
 console.log(t); // true
 ```
 
+#### isGenerator (arg: any): boolean
+
+*evaluate whether the provided argument is a generator function*
+
+**Example**
+
+```js
+import { isGenerator } from 'js-heuristics';
+
+var gen = function* () { yield true; };
+
+var t = isGenerator(gen);
+
+console.log(t); // true
+```
+
+#### isAsyncFunction (arg: any): boolean
+
+*evaluate whether the provided argument is an async function*
+
+**Example**
+
+```js
+import { isAsyncFunction } from 'js-heuristics';
+
+var fn = async function () { ... };
+
+var t = isAsyncFunction(fn);
+
+console.log(t); // true
+```
+
+#### isAnonymousFunction (arg: any): boolean
+
+*evaluate whether the provided argument is an anonymous function*
+
+**Example**
+
+```js
+import { isAnonymousFunction } from 'js-heuristics';
+
+var fn = function () { ... };
+
+var t = isAnonymousFunction(fn);
+
+console.log(t); // true
+```
+
+#### isRegularFunction (arg: any): boolean
+
+*evaluate whether the provided argument is a named, synchronous function*
+
+**Example**
+
+```js
+import { isRegularFunction } from 'js-heuristics';
+
+var fn = function name () { ... };
+
+var t = isRegularFunction(fn);
+
+console.log(t); // true
+```
+
 #### isString (arg: any): boolean
 
 *evaluate whether the provided argument is a string*
@@ -81,6 +145,19 @@ var fn = () => ({});
 var t = isFunction(fn);
 
 console.log(t); // true
+```
+
+#### isBoolean (arg: any) boolean
+
+*evaluate whether the provided argument is a Boolean*
+
+**Example**
+
+```js
+import { isBoolean } from 'js-heuristics';
+
+...
+if (isBoolean(true)) // true
 ```
 
 #### isError (arg: any): boolean
@@ -130,7 +207,7 @@ console.log(isArray(notAnArr)); // false
 #### isNumber (arg: any): boolean
 
 *evaluate whether the provided argument is a number*
-**Note** Will return false for *NaN*
+**Note** Will return false for *NaN* and single element Arrays (see: `toString` gotchas)
 
 **Example**
 
@@ -140,6 +217,20 @@ import { isNumber } from 'js-heuristics';
 console.log(isNumber(9)); // true
 
 console.log(isNumber(NaN)); // false
+```
+
+#### isFloat (arg: any): boolean
+
+*evaluate whether the provided argument is a floating point number*
+
+**Example**
+
+```js
+import { isFloat } from 'js-heuristics';
+
+console.log(isFloat(9.1)); // true
+
+console.log(isFloat(1)); // false
 ```
 
 ### <a name="validate"></a> Validators
