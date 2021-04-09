@@ -1,9 +1,9 @@
-# js-heuristics 
+# heuristics
 
 ## Useful heuristics, type checks, and validation helpers for JavaScript
 
-[![Build Status](https://travis-ci.org/MatthewZito/js-heuristics.svg?branch=master)](https://travis-ci.org/MatthewZito/js-heuristics)
-[![Coverage Status](https://coveralls.io/repos/github/MatthewZito/js-heuristics/badge.svg?branch=main)](https://coveralls.io/github/MatthewZito/js-heuristics?branch=main)
+[![Build Status](https://travis-ci.org/MatthewZito/heuristics.svg?branch=master)](https://travis-ci.org/MatthewZito/heuristics)
+[![Coverage Status](https://coveralls.io/repos/github/MatthewZito/heuristics/badge.svg)](https://coveralls.io/github/MatthewZito/heuristics)
 
 `js-heuristics` is a library of useful heuristics, type checks, and validation helpers for JavaScript. Instead of repeatedly checking types, evaluating whether or not an API response is null (or indeed an object, only entirely empty), you can depend on this tested, consistent library API to get the job done.
 
@@ -13,17 +13,17 @@
 
 ## Table of Contents
 
-- [Supported Environments](#builds) 
+- [Supported Environments](#builds)
 - [Installation + Usage](#usage)
 - [Documentation / API](#docs)
   - [Type Checks](#typecheck)
   - [Validators](#validate)
   - [Contracts](#contract)
   - [Iterators](#iter)
-  
+
 ## <a name="builds"></a> Supported Environments
 
-`js-heuristics` currently supports UMD, CommonJS (node versions >= 10), and ESM build-targets. Is your preferred build not supported? Open an issue!
+`heuristics` currently supports UMD, CommonJS (node versions >= 10), and ESM build-targets. Is your preferred build not supported? Open an issue!
 
 ## <a name="usage"></a> Installation + Usage
 
@@ -33,7 +33,7 @@ npm install js-heuristics
 yarn add js-heuristics
 ```
 
-Commonjs: 
+Commonjs:
 
 ```js
 const { isObject } = require('js-heuristics');
@@ -170,7 +170,7 @@ if (isBoolean(true)) // true
 import { isError } from 'js-heuristics';
 
 ...
-var result = await fetchData(); 
+var result = await fetchData();
 ...
 if (isError(result)) this.error = true;
 else this.data = result.data;
@@ -356,7 +356,7 @@ try {
   contractWithMessage('str');
 } catch ({ message }) {
   console.log(message); // 'Must be an object'
-} 
+}
 ```
 
 #### testForEach (...predicates: Function[]): boolean
