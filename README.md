@@ -1,5 +1,7 @@
 # heuristics
 
+**This package has been deprecated; use https://github.com/MatthewZito/js-heuristics - `npm install heuristics`**
+
 ## Useful heuristics, type checks, and validation helpers for JavaScript
 
 [![Build Status](https://travis-ci.org/MatthewZito/heuristics.svg?branch=master)](https://travis-ci.org/MatthewZito/heuristics)
